@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Найти работу | Mangystau Jobs - Вакансии в Актау</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%);
+            font-family: 'Inter', sans-serif;
+        }
+        .job-card {
+            background: #1E293B;
+            border: 1px solid #334155;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+        .job-card:hover {
+            border-color: #3B82F6;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.2);
+        }
+        .filter-sidebar {
+            background: #1E293B;
+            border: 1px solid #334155;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            position: sticky;
+            top: 100px;
+        }
+        .stat-circle {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3B82F6, #06B6D4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+        .salary-range {
+            background: #0F172A;
+            border-radius: 1rem;
+            padding: 0.5rem;
+        }
+        .tag {
+            background: rgba(59, 130, 246, 0.1);
+            color: #60A5FA;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            display: inline-block;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .tag:hover {
+            background: #3B82F6;
+            color: white;
+            cursor: pointer;
+        }
+        .active-filter {
+            background: #3B82F6;
+            color: white;
+        }
+        .search-input {
+            background: #0F172A;
+            border: 1px solid #334155;
+            border-radius: 1rem;
+            padding: 0.75rem 1rem;
+            width: 100%;
+            color: white;
+            transition: all 0.3s;
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: #3B82F6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+        .pagination-btn {
+            background: #1E293B;
+            border: 1px solid #334155;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            color: white;
+            transition: all 0.3s;
+        }
+        .pagination-btn:hover {
+            background: #3B82F6;
+            border-color: #3B82F6;
+        }
+        .pagination-btn.active {
+            background: #3B82F6;
+            border-color: #3B82F6;
+        }
+        .tip-card {
+            background: #1E293B;
+            border: 1px solid #334155;
+            border-radius: 1rem;
+            padding: 1rem;
+            transition: all 0.3s;
+        }
+        .tip-card:hover {
+            border-color: #F59E0B;
+        }
+        .faq-item {
+            border-bottom: 1px solid #334155;
+            padding: 1rem 0;
+            cursor: pointer;
+        }
+        .faq-question {
+            font-weight: bold;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-answer {
+            display: none;
+            padding-top: 0.5rem;
+            color: #94A3B8;
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="fixed w-full bg-dark/95 backdrop-blur-md shadow-2xl z-50 border-b border-blue-900/30 py-4">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <div class="text-3xl">🏝️</div>
+            <div>
+                <span class="font-bold text-2xl bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Mangystau</span>
+                <span class="font-bold text-2xl text-white">Jobs</span>
+            </div>
+            <span class="bg-blue-600 text-white text-xs px-2 py-1 rounded-full">Найти работу</span>
+        </div>
+        <div class="hidden md:flex space-x-6">
+            <a href="index.html" class="text-gray-300 hover:text-blue-400 transition"><i class="fas fa-home mr-1"></i>Главная</a>
+            <a href="features.html" class="text-gray-300 hover:text-blue-400 transition"><i class="fas fa-star mr-1"></i>Возможности</a>
+            <a href="find-work.html" class="text-blue-400 font-bold"><i class="fas fa-search mr-1"></i>Найти работу</a>
+            <a href="all-features.html" class="text-gray-300 hover:text-blue-400 transition"><i class="fas fa-list mr-1"></i>Все функции</a>
+            <a href="hire.html" class="text-gray-300 hover:text-blue-400 transition"><i class="fas fa-handshake mr-1"></i>Найм</a>
+            <a href="register.php" class="px-4 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-xl hover:shadow-lg transition">
+                <i class="fas fa-user-plus mr-1"></i>Регистрация
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="pt-32 pb-12 text-center">
+    <div class="max-w-5xl mx-auto px-4">
+        <div class="inline-block animate-pulse mb-6">
+            <span class="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-4 py-2 rounded-full text-sm font-semibold">🔥 700+ актуальных вакансий</span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">
+            Найдите работу <span class="text-blue-400">мечты</span>
+        </h1>
+        <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            Тысячи вакансий от проверенных работодателей в Актау и по всей Мангистауской области
+        </p>
+        <div class="relative max-w-2xl mx-auto">
+            <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+            <input type="text" id="searchInput" placeholder="Поиск по названию вакансии, компании или навыкам..." 
+                   class="search-input pl-12 pr-4 py-4 text-lg">
+        </div>
+    </div>
+</section>
+
+<!-- Основной контент -->
+<section class="py-8 pb-20">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex flex-col lg:flex-row gap-8">
+            
+            <!-- Боковая панель с фильтрами -->
+            <div class="lg:w-80">
+                <div class="filter-sidebar">
+                    <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-filter mr-2 text-blue-400"></i>Фильтры</h3>
+                    
+                    <!-- Микрорайон -->
+                    <div class="mb-6">
+                        <label class="text-gray-300 text-sm font-semibold mb-2 block">📍 Микрорайон</label>
+                        <div class="flex flex-wrap gap-2" id="districtFilters">
+                            <span data-district="" class="tag active-filter">Все</span>
+                            <span data-district="1" class="tag">1 мкр</span>
+                            <span data-district="2" class="tag">2 мкр</span>
+                            <span data-district="3" class="tag">3 мкр</span>
+                            <span data-district="4" class="tag">4 мкр</span>
+                            <span data-district="5" class="tag">5 мкр</span>
+                            <span data-district="6" class="tag">6 мкр</span>
+                            <span data-district="7" class="tag">7 мкр</span>
+                            <span data-district="8" class="tag">8 мкр</span>
+                            <span data-district="9" class="tag">9 мкр</span>
+                            <span data-district="10" class="tag">10 мкр</span>
+                            <span data-district="11" class="tag">11 мкр</span>
+                            <span data-district="12" class="tag">12 мкр</span>
+                            <span data-district="13" class="tag">13 мкр</span>
+                            <span data-district="14" class="tag">14 мкр</span>
+                            <span data-district="15" class="tag">15 мкр</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Тип занятости -->
+                    <div class="mb-6">
+                        <label class="text-gray-300 text-sm font-semibold mb-2 block">⏱ Тип занятости</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 text-gray-300 cursor-pointer">
+                                <input type="checkbox" value="full" class="employment-filter rounded bg-dark border-gray-600"> 
+                                <span>Полная занятость</span>
+                            </label>
+                            <label class="flex items-center gap-2 text-gray-300 cursor-pointer">
+                                <input type="checkbox" value="part" class="employment-filter rounded bg-dark border-gray-600"> 
+                                <span>Частичная занятость</span>
+                            </label>
+                            <label class="flex items-center gap-2 text-gray-300 cursor-pointer">
+                                <input type="checkbox" value="freelance" class="employment-filter rounded bg-dark border-gray-600"> 
+                                <span>Подработка / Фриланс</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Зарплата -->
+                    <div class="mb-6">
+                        <label class="text-gray-300 text-sm font-semibold mb-2 block">💰 Зарплата</label>
+                        <div class="flex gap-3">
+                            <input type="number" id="salaryMin" placeholder="от" class="search-input text-sm">
+                            <input type="number" id="salaryMax" placeholder="до" class="search-input text-sm">
+                        </div>
+                    </div>
+                    
+                    <!-- Опыт работы -->
+                    <div class="mb-6">
+                        <label class="text-gray-300 text-sm font-semibold mb-2 block">📋 Опыт работы</label>
+                        <select id="experienceFilter" class="search-input text-sm">
+                            <option value="">Любой</option>
+                            <option value="0">Без опыта</option>
+                            <option value="1">От 1 года</option>
+                            <option value="3">От 3 лет</option>
+                            <option value="5">От 5 лет</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Кнопки -->
+                    <div class="flex gap-3">
+                        <button id="applyFilters" class="flex-1 bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-2 rounded-xl font-semibold hover:shadow-lg transition">
+                            Применить
+                        </button>
+                        <button id="resetFilters" class="flex-1 bg-gray-700 text-white py-2 rounded-xl font-semibold hover:bg-gray-600 transition">
+                            Сбросить
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Советы по поиску -->
+                <div class="mt-6 filter-sidebar">
+                    <h3 class="text-xl font-bold text-white mb-4"><i class="fas fa-lightbulb text-yellow-400 mr-2"></i>Советы по поиску</h3>
+                    <div class="space-y-3">
+                        <div class="tip-card">
+                            <i class="fas fa-file-alt text-blue-400 mr-2"></i>
+                            <span class="text-white text-sm">Заполните профиль полностью</span>
+                            <p class="text-gray-500 text-xs mt-1">Работодатели чаще смотрят заполненные резюме</p>
+                        </div>
+                        <div class="tip-card">
+                            <i class="fas fa-bolt text-yellow-400 mr-2"></i>
+                            <span class="text-white text-sm">Откликайтесь первыми</span>
+                            <p class="text-gray-500 text-xs mt-1">Новые вакансии просматриваются чаще</p>
+                        </div>
+                        <div class="tip-card">
+                            <i class="fab fa-telegram text-cyan-400 mr-2"></i>
+                            <span class="text-white text-sm">Подключите Telegram-бот</span>
+                            <p class="text-gray-500 text-xs mt-1">Получайте уведомления о новых вакансиях</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Список вакансий -->
+            <div class="flex-1">
+                <!-- Результаты поиска -->
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <span class="text-gray-400">Найдено: </span>
+                        <span id="jobsCount" class="text-white font-bold text-xl">0</span>
+                        <span class="text-gray-400"> вакансий</span>
+                    </div>
+                    <select id="sortBy" class="bg-dark border border-gray-700 rounded-lg px-3 py-2 text-gray-300 text-sm">
+                        <option value="date">По дате (новые)</option>
+                        <option value="salary_desc">По зарплате (высокие)</option>
+                        <option value="salary_asc">По зарплате (низкие)</option>
+                    </select>
+                </div>
+                
+                <!-- Список вакансий -->
+                <div id="jobsList" class="space-y-4">
+                    <!-- Вакансии загружаются через JS -->
+                    <div class="text-center py-12">
+                        <div class="loading-spinner mx-auto"></div>
+                        <p class="text-gray-400 mt-4">Загрузка вакансий...</p>
+                    </div>
+                </div>
+                
+                <!-- Пагинация -->
+                <div id="pagination" class="flex justify-center gap-2 mt-8">
+                    <!-- Кнопки пагинации будут здесь -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Популярные категории -->
+<section class="py-16 bg-dark/50">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-white text-center mb-4">Популярные категории</h2>
+        <p class="text-center text-gray-400 mb-12">Самые востребованные направления в Актау</p>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            <div class="bg-dark border border-gray-800 rounded-xl p-4 text-center hover:border-blue-500 transition cursor-pointer" data-category="Бариста">
+                <div class="text-3xl mb-2">☕</div>
+                <div class="text-white text-sm">Бариста</div>
+                <div class="text-gray-500 text-xs">24 вакансии</div>
+            </div>
+            <div class="bg-dark border border-gray-800 rounded-xl p-4 text-center hover:border-blue-500 transition cursor-pointer" data-category="Продавец">
+                <div class="text-3xl mb-2">🛍️</div>
+                <div class="text-white text-sm">Продавец</div>
+                <div class="text-gray-500 text-xs">56 вакансий</div>
+            </div>
+            <div class="bg-dark border border-gray-800 rounded-xl p-4 text-center hover:border-blue-500 transition cursor-pointer" data-category="Водитель">
+                <div class="text-3xl mb-2">🚛</div>
+                <div class="text-white text-sm">Водитель</div>
+                <div class="text-gray-500 text-xs">32 вакансии</div>
+            </div>
+            <div class="bg-dark border border-gray-800 rounded-xl p-4 text-center hover:border-blue-500 transition cursor-pointer" data-category="Строитель">
+                <div class="text-3xl mb-2">🏗️</div>
+                <div class="text-white text-sm">Строитель</div>
+                <div class="text-gray-500 text-xs">28 вакансий</div>
+            </div>
+            <div class="bg-dark border border-gray-800 rounded-xl p-4 text-center hover:border-blue-500 transition cursor-pointer" data-category="Программист">
+                <div class="text-3xl mb-2">💻</div>
+                <div class="text-white text-sm">Программист</div>
+                <div class="text-gray-500 text-xs">15 вакансий</div>
+            </div>
+            <div class="bg-dark border border-gray-800 rounded-xl p-4 text-center hover:border-blue-500 transition cursor-pointer" data-category="Бухгалтер">
+                <div class="text-3xl mb-2">📊</div>
+                <div class="text-white text-sm">Бухгалтер</div>
+                <div class="text-gray-500 text-xs">19 вакансий</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Как найти работу -->
+<section class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-white text-center mb-4">Как найти работу?</h2>
+        <p class="text-center text-gray-400 mb-12">4 простых шага к успешному трудоустройству</p>
+        
+        <div class="grid md:grid-cols-4 gap-6">
+            <div class="text-center">
+                <div class="stat-circle mx-auto mb-4">1</div>
+                <h3 class="text-xl font-bold text-white mb-2">Создайте резюме</h3>
+                <p class="text-gray-400 text-sm">Заполните информацию о себе, навыках и опыте</p>
+            </div>
+            <div class="text-center">
+                <div class="stat-circle mx-auto mb-4">2</div>
+                <h3 class="text-xl font-bold text-white mb-2">Настройте фильтры</h3>
+                <p class="text-gray-400 text-sm">Выберите микрорайон, зарплату и тип занятости</p>
+            </div>
+            <div class="text-center">
+                <div class="stat-circle mx-auto mb-4">3</div>
+                <h3 class="text-xl font-bold text-white mb-2">Откликайтесь</h3>
+                <p class="text-gray-400 text-sm">Нажимайте "Откликнуться" на подходящие вакансии</p>
+            </div>
+            <div class="text-center">
+                <div class="stat-circle mx-auto mb-4">4</div>
+                <h3 class="text-xl font-bold text-white mb-2">Получите работу</h3>
+                <p class="text-gray-400 text-sm">Работодатель свяжется с вами по телефону</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AI рекомендации -->
+<section class="py-16 bg-dark/50">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="bg-gradient-to-r from-purple-900 via-blue-900 to-cyan-900 rounded-3xl shadow-2xl overflow-hidden border border-blue-500/30">
+            <div class="p-8 md:p-12">
+                <div class="flex items-center justify-between mb-6 flex-wrap gap-4">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">🧠 AI подбор для вас</h2>
+                    <span class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold animate-pulse">Персональные рекомендации</span>
+                </div>
+                <p class="text-xl mb-8 text-blue-200">На основе вашего профиля AI подобрал эти вакансии</p>
+                
+                <div class="grid md:grid-cols-3 gap-4" id="aiRecommendations">
+                    <div class="bg-dark/50 backdrop-blur rounded-xl p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-white">Бариста</h3>
+                            <span class="text-cyan-400 font-bold">94%</span>
+                        </div>
+                        <p class="text-gray-400 text-sm">Coffee Like · 3 мкр</p>
+                        <p class="text-gray-300 text-sm mt-2">150 000 - 200 000 ₸</p>
+                        <button class="mt-3 w-full bg-blue-600 text-white py-2 rounded-lg text-sm hover:bg-blue-700 transition">Откликнуться</button>
+                    </div>
+                    <div class="bg-dark/50 backdrop-blur rounded-xl p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-white">Продавец-кассир</h3>
+                            <span class="text-cyan-400 font-bold">87%</span>
+                        </div>
+                        <p class="text-gray-400 text-sm">Магнум · 5 мкр</p>
+                        <p class="text-gray-300 text-sm mt-2">120 000 - 150 000 ₸</p>
+                        <button class="mt-3 w-full bg-blue-600 text-white py-2 rounded-lg text-sm hover:bg-blue-700 transition">Откликнуться</button>
+                    </div>
+                    <div class="bg-dark/50 backdrop-blur rounded-xl p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-white">Администратор</h3>
+                            <span class="text-cyan-400 font-bold">82%</span>
+                        </div>
+                        <p class="text-gray-400 text-sm">Отель Актау · 1 мкр</p>
+                        <p class="text-gray-300 text-sm mt-2">180 000 - 220 000 ₸</p>
+                        <button class="mt-3 w-full bg-blue-600 text-white py-2 rounded-lg text-sm hover:bg-blue-700 transition">Откликнуться</button>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <a href="register.php" class="inline-block bg-white text-blue-900 px-8 py-3 rounded-xl font-semibold hover:shadow-xl transition">
+                        Зарегистрироваться для AI-подбора <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Отзывы -->
+<section class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-white text-center mb-4">Истории успеха</h2>
+        <p class="text-center text-gray-400 mb-12">Реальные люди, которые нашли работу через нас</p>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-dark border border-gray-800 rounded-2xl p-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white text-xl">АЖ</div>
+                    <div>
+                        <div class="font-bold text-white">Айгерим</div>
+                        <div class="text-sm text-gray-400">Бариста, 3 мкр</div>
+                    </div>
+                </div>
+                <p class="text-gray-300">"Нашла работу через платформу за 3 дня! AI подобрал идеальную вакансию рядом с домом."</p>
+                <div class="flex text-yellow-400 mt-3">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+            </div>
+            <div class="bg-dark border border-gray-800 rounded-2xl p-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white text-xl">ДС</div>
+                    <div>
+                        <div class="font-bold text-white">Данияр</div>
+                        <div class="text-sm text-gray-400">Программист, 5 мкр</div>
+                    </div>
+                </div>
+                <p class="text-gray-300">"Отличная платформа! Удобные фильтры по микрорайонам, нашёл работу за неделю."</p>
+                <div class="flex text-yellow-400 mt-3">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+            </div>
+            <div class="bg-dark border border-gray-800 rounded-2xl p-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white text-xl">МК</div>
+                    <div>
+                        <div class="font-bold text-white">Мадина</div>
+                        <div class="text-sm text-gray-400">Продавец, 8 мкр</div>
+                    </div>
+                </div>
+                <p class="text-gray-300">"Очень довольна! Быстро, удобно, бесплатно. Telegram-бот присылает новые вакансии."</p>
+                <div class="flex text-yellow-400 mt-3">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-16 bg-dark/50">
+    <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-white text-center mb-4">Часто задаваемые вопросы</h2>
+        <p class="text-center text-gray-400 mb-12">Ответы на популярные вопросы о поиске работы</p>
+        
+        <div class="space-y-2">
+            <div class="faq-item">
+                <div class="faq-question"><span>❓ Как откликнуться на вакансию?</span><i class="fas fa-chevron-down text-gray-400"></i></div>
+                <div class="faq-answer">Нажмите кнопку "Откликнуться" на карточке вакансии. Работодатель увидит ваш отклик и свяжется с вами.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question"><span>❓ Нужно ли платить за отклики?</span><i class="fas fa-chevron-down text-gray-400"></i></div>
+                <div class="faq-answer">Нет, все отклики на платформе абсолютно бесплатны для соискателей.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question"><span>❓ Как работает AI-подбор?</span><i class="fas fa-chevron-down text-gray-400"></i></div>
+                <div class="faq-answer">AI анализирует ваши навыки и опыт, затем показывает вакансии с наибольшим процентом совпадения.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question"><span>❓ Что делать, если не приходит ответ от работодателя?</span><i class="fas fa-chevron-down text-gray-400"></i></div>
+                <div class="faq-answer">Продолжайте откликаться на другие вакансии. Работодатели сами связываются с подходящими кандидатами.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question"><span>❓ Как получить уведомления о новых вакансиях?</span><i class="fas fa-chevron-down text-gray-400"></i></div>
+                <div class="faq-answer">Зарегистрируйтесь и подключите Telegram-бот в личном кабинете. Вы будете получать уведомления мгновенно.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-16 bg-gradient-to-r from-blue-900 to-cyan-900">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">Готовы начать поиск?</h2>
+        <p class="text-xl text-blue-100 mb-8">Более 5000 соискателей уже нашли работу через нас</p>
+        <div class="flex flex-wrap gap-4 justify-center">
+            <a href="register.php" class="px-8 py-3 bg-white text-blue-900 rounded-xl font-semibold hover:shadow-xl transition">
+                <i class="fas fa-user-plus mr-2"></i>Зарегистрироваться
+            </a>
+            <a href="all-features.html" class="px-8 py-3 border-2 border-white text-white rounded-xl font-semibold hover:bg-white/10 transition">
+                <i class="fas fa-list mr-2"></i>Все функции
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark border-t border-gray-800 py-12">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="text-2xl">🏝️</span>
+                    <span class="font-bold text-xl text-white">MangystauJobs</span>
+                </div>
+                <p class="text-gray-400 text-sm">Цифровая платформа занятости для Мангистауской области</p>
+            </div>
+            <div>
+                <h3 class="font-bold text-white mb-3">Навигация</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="index.html" class="text-gray-400 hover:text-blue-400">Главная</a></li>
+                    <li><a href="features.html" class="text-gray-400 hover:text-blue-400">Возможности</a></li>
+                    <li><a href="find-work.html" class="text-gray-400 hover:text-blue-400">Найти работу</a></li>
+                    <li><a href="all-features.html" class="text-gray-400 hover:text-blue-400">Все функции</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold text-white mb-3">Для соискателей</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="find-work.html" class="text-gray-400 hover:text-blue-400">Поиск вакансий</a></li>
+                    <li><a href="register.php?role=seeker" class="text-gray-400 hover:text-blue-400">Создать резюме</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-blue-400">Советы по поиску</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold text-white mb-3">Контакты</h3>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><i class="fas fa-map-marker-alt mr-2"></i>Актау, Мангистау</li>
+                    <li><i class="fas fa-envelope mr-2"></i>info@mangystaujobs.kz</li>
+                    <li><i class="fas fa-phone mr-2"></i>+7 7292 XX XX XX</li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+            <p>© 2025 Mangystau Jobs - Все права защищены. Решение для хакатона.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    // Моковые данные для демонстрации
+    const jobsData = [
+        { id: 1, title: "Бариста", company: "Coffee Like", district: "3", salary_min: 150000, salary_max: 200000, type: "full", skills: "бариста, кофемашина", experience: 1, date: "2024-01-15", description: "Ищем активного баристу с опытом работы от 1 года. Уютная кофейня в 3 микрорайоне." },
+        { id: 2, title: "Продавец-кассир", company: "Магнум", district: "5", salary_min: 120000, salary_max: 150000, type: "full", skills: "кассир, работа с людьми", experience: 0, date: "2024-01-14", description: "Требуется продавец в продуктовый магазин. Опыт не обязателен." },
+        { id: 3, title: "Водитель", company: "Логистик KZ", district: "8", salary_min: 200000, salary_max: 250000, type: "full", skills: "права B/C", experience: 3, date: "2024-01-13", description: "Требуется водитель с правами категории B/C. Знание города." },
+        { id: 4, title: "Программист PHP", company: "IT Solutions", district: "1", salary_min: 300000, salary_max: 400000, type: "full", skills: "PHP, MySQL, Laravel", experience: 2, date: "2024-01-12", description: "Разработка веб-приложений. Знание Laravel приветствуется." },
+        { id: 5, title: "Администратор", company: "Отель Актау", district: "1", salary_min: 180000, salary_max: 220000, type: "full", skills: "администрирование, английский", experience: 1, date: "2024-01-11", description: "Встреча гостей, бронирование номеров. Английский язык обязателен." },
+        { id: 6, title: "Строитель", company: "СтройКом", district: "12", salary_min: 150000, salary_max: 200000, type: "freelance", skills: "строительство, ремонт", experience: 2, date: "2024-01-10", description: "Ремонт квартир и офисов. Опыт от 2 лет." },
+        { id: 7, title: "Бухгалтер", company: "ФинансГрупп", district: "5", salary_min: 200000, salary_max: 250000, type: "full", skills: "1С, налоги", experience: 3, date: "2024-01-09", description: "Ведение бухгалтерии. Знание 1С обязательно." },
+        { id: 8, title: "Курьер", company: "Доставка24", district: "3", salary_min: 80000, salary_max: 120000, type: "part", skills: "водительские права", experience: 0, date: "2024-01-08", description: "Доставка документов по городу. Наличие авто приветствуется." }
+    ];
+    
+    let currentJobs = [...jobsData];
+    let currentPage = 1;
+    const itemsPerPage = 5;
+    
+    function renderJobs() {
+        const container = document.getElementById('jobsList');
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const pageJobs = currentJobs.slice(start, end);
+        
+        if (pageJobs.length === 0) {
+            container.innerHTML = '<div class="bg-dark border border-gray-800 rounded-2xl p-12 text-center"><i class="fas fa-search text-5xl text-gray-500 mb-3"></i><p class="text-gray-400">По вашему запросу ничего не найдено</p></div>';
+            document.getElementById('jobsCount').innerText = '0';
+            return;
+        }
+        
+        container.innerHTML = pageJobs.map(job => `
+            <div class="job-card">
+                <div class="flex flex-col md:flex-row justify-between gap-4">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-2 mb-2">
+                            <h3 class="text-xl font-bold text-white">${job.title}</h3>
+                            <span class="bg-blue-900/50 text-blue-400 text-xs px-2 py-1 rounded-full">${job.type === 'full' ? 'Полная занятость' : job.type === 'part' ? 'Частичная' : 'Подработка'}</span>
+                        </div>
+                        <p class="text-gray-400 mb-2"><i class="fas fa-building mr-1"></i>${job.company} • <i class="fas fa-map-marker-alt ml-2 mr-1"></i>${job.district} микрорайон</p>
+                        <p class="text-blue-400 font-semibold mb-2">${job.salary_min.toLocaleString()} - ${job.salary_max.toLocaleString()} ₸</p>
+                        <p class="text-gray-400 text-sm mb-2">${job.description.substring(0, 100)}...</p>
+                        <div class="flex flex-wrap gap-1">
+                            ${job.skills.split(',').map(skill => `<span class="tag">${skill.trim()}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 min-w-[140px]">
+                        <button onclick="applyToJob(${job.id})" class="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-4 py-2 rounded-xl hover:shadow-lg transition">
+                            <i class="fas fa-paper-plane mr-1"></i>Откликнуться
+                        </button>
+                        <button onclick="saveJob(${job.id})" class="border border-gray-600 text-gray-400 px-4 py-2 rounded-xl hover:border-blue-500 hover:text-blue-400 transition">
+                            <i class="far fa-bookmark mr-1"></i>Сохранить
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+        
+        document.getElementById('jobsCount').innerText = currentJobs.length;
+        renderPagination();
+    }
+    
+    function renderPagination() {
+        const totalPages = Math.ceil(currentJobs.length / itemsPerPage);
+        const container = document.getElementById('pagination');
+        
+        if (totalPages <= 1) {
+            container.innerHTML = '';
+            return;
+        }
+        
+        let html = '';
+        for (let i = 1; i <= totalPages; i++) {
+            html += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
+        }
+        container.innerHTML = html;
+    }
+    
+    function goToPage(page) {
+        currentPage = page;
+        renderJobs();
+        window.scrollTo({ top: 500, behavior: 'smooth' });
+    }
+    
+    function applyFilters() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        const selectedDistrict = document.querySelector('#districtFilters .active-filter')?.dataset.district || '';
+        const selectedEmployments = Array.from(document.querySelectorAll('.employment-filter:checked')).map(cb => cb.value);
+        const salaryMin = parseInt(document.getElementById('salaryMin').value) || 0;
+        const salaryMax = parseInt(document.getElementById('salaryMax').value) || Infinity;
+        const experienceFilter = document.getElementById('experienceFilter').value;
+        const sortBy = document.getElementById('sortBy').value;
+        
+        currentJobs = jobsData.filter(job => {
+            if (searchTerm && !job.title.toLowerCase().includes(searchTerm) && !job.company.toLowerCase().includes(searchTerm) && !job.skills.toLowerCase().includes(searchTerm)) return false;
+            if (selectedDistrict && job.district !== selectedDistrict) return false;
+            if (selectedEmployments.length > 0 && !selectedEmployments.includes(job.type)) return false;
+            if (salaryMin && job.salary_max < salaryMin) return false;
+            if (salaryMax !== Infinity && job.salary_min > salaryMax) return false;
+            if (experienceFilter && job.experience < parseInt(experienceFilter)) return false;
+            return true;
+        });
+        
+        if (sortBy === 'salary_desc') currentJobs.sort((a, b) => b.salary_max - a.salary_max);
+        else if (sortBy === 'salary_asc') currentJobs.sort((a, b) => a.salary_min - b.salary_min);
+        else currentJobs.sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        currentPage = 1;
+        renderJobs();
+    }
+    
+    function resetFilters() {
+        document.getElementById('searchInput').value = '';
+        document.querySelectorAll('#districtFilters .tag').forEach(tag => tag.classList.remove('active-filter'));
+        document.querySelector('#districtFilters .tag:first-child').classList.add('active-filter');
+        document.querySelectorAll('.employment-filter:checked').forEach(cb => cb.checked = false);
+        document.getElementById('salaryMin').value = '';
+        document.getElementById('salaryMax').value = '';
+        document.getElementById('experienceFilter').value = '';
+        document.getElementById('sortBy').value = 'date';
+        applyFilters();
+    }
+    
+    function applyToJob(jobId) {
+        showToast('Отклик отправлен! Работодатель свяжется с вами', 'success');
+    }
+    
+    function saveJob(jobId) {
+        showToast('Вакансия сохранена в избранное', 'success');
+    }
+    
+    document.getElementById('applyFilters').addEventListener('click', applyFilters);
+    document.getElementById('resetFilters').addEventListener('click', resetFilters);
+    document.getElementById('searchInput').addEventListener('keypress', (e) => { if (e.key === 'Enter') applyFilters(); });
+    
+    document.querySelectorAll('#districtFilters .tag').forEach(tag => {
+        tag.addEventListener('click', function() {
+            document.querySelectorAll('#districtFilters .tag').forEach(t => t.classList.remove('active-filter'));
+            this.classList.add('active-filter');
+            applyFilters();
+        });
+    });
+    
+    document.querySelectorAll('.employment-filter').forEach(cb => {
+        cb.addEventListener('change', applyFilters);
+    });
+    
+    document.getElementById('sortBy').addEventListener('change', applyFilters);
+    
+    document.querySelectorAll('[data-category]').forEach(cat => {
+        cat.addEventListener('click', function() {
+            document.getElementById('searchInput').value = this.dataset.category;
+            applyFilters();
+        });
+    });
+    
+    // Инициализация
+    renderJobs();
+</script>
+</body>
+</html>

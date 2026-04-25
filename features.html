@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все возможности | Mangystau Jobs - Полный обзор</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%);
+        }
+        .feature-card {
+            background: #1E293B;
+            border: 1px solid #334155;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .feature-card:hover {
+            border-color: #3B82F6;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.2);
+        }
+        .stat-big {
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            border: 1px solid #334155;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .pricing-card {
+            background: #1E293B;
+            border: 1px solid #334155;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        .pricing-card:hover {
+            border-color: #3B82F6;
+            transform: scale(1.02);
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #334155;
+            padding: 1rem;
+            text-align: left;
+            color: #E2E8F0;
+        }
+        .comparison-table th {
+            background: #0F172A;
+            color: #60A5FA;
+        }
+        .faq-item {
+            border-bottom: 1px solid #334155;
+            padding: 1rem 0;
+            cursor: pointer;
+        }
+        .faq-question {
+            font-weight: bold;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-answer {
+            display: none;
+            padding-top: 0.5rem;
+            color: #94A3B8;
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="fixed w-full bg-dark/95 backdrop-blur-md shadow-2xl z-50 border-b border-blue-900/30 py-4">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <div class="text-3xl">🏝️</div>
+            <div>
+                <span class="font-bold text-2xl bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Mangystau</span>
+                <span class="font-bold text-2xl text-white">Jobs</span>
+            </div>
+            <span class="bg-blue-600 text-white text-xs px-2 py-1 rounded-full">Все возможности</span>
+        </div>
+        <div class="hidden md:flex space-x-6">
+            <a href="index.html" class="text-gray-300 hover:text-blue-400 transition"><i class="fas fa-home mr-1"></i>Главная</a>
+            <a href="features.html" class="text-blue-400 font-bold"><i class="fas fa-star mr-1"></i>Возможности</a>
+            <a href="documentation.html" class="text-gray-300 hover:text-blue-400 transition"><i class="fas fa-book mr-1"></i>Документация</a>
+            <a href="register.php" class="text-gray-300 hover:text-blue-400 transition"><i class="fas fa-user-plus mr-1"></i>Регистрация</a>
+            <a href="login.php" class="text-gray-300 hover:text-blue-400 transition"><i class="fas fa-sign-in-alt mr-1"></i>Вход</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="pt-32 pb-20 text-center bg-gradient-to-r from-blue-900/50 to-cyan-900/50">
+    <div class="max-w-5xl mx-auto px-4">
+        <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">
+            Все возможности <span class="text-blue-400">платформы</span>
+        </h1>
+        <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            Mangystau Jobs — это полная экосистема для поиска работы и найма сотрудников в Мангистауской области
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+            <a href="register.php" class="px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition">
+                <i class="fas fa-user-plus mr-2"></i>Начать бесплатно
+            </a>
+            <a href="#all-features" class="px-8 py-3 border border-blue-500 text-blue-400 rounded-xl font-semibold hover:bg-blue-500/10 transition">
+                <i class="fas fa-arrow-down mr-2"></i>Смотреть все
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Статистика -->
+<section class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-6">
+            <div class="stat-big">
+                <div class="text-4xl font-bold text-blue-400">700+</div>
+                <div class="text-gray-400 mt-1">Активных вакансий</div>
+                <div class="text-green-400 text-sm mt-2">↑ +23% за месяц</div>
+            </div>
+            <div class="stat-big">
+                <div class="text-4xl font-bold text-cyan-400">5,000+</div>
+                <div class="text-gray-400 mt-1">Соискателей</div>
+                <div class="text-green-400 text-sm mt-2">↑ +45% за месяц</div>
+            </div>
+            <div class="stat-big">
+                <div class="text-4xl font-bold text-blue-400">300+</div>
+                <div class="text-gray-400 mt-1">Компаний</div>
+                <div class="text-green-400 text-sm mt-2">↑ +12 за неделю</div>
+            </div>
+            <div class="stat-big">
+                <div class="text-4xl font-bold text-cyan-400">95%</div>
+                <div class="text-gray-400 mt-1">Успех трудоустройства</div>
+                <div class="text-green-400 text-sm mt-2">↑ +5% с прошлого месяца</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Все функции -->
+<section id="all-features" class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-white text-center mb-4">Функции платформы</h2>
+        <p class="text-center text-gray-400 mb-12">Всё, что нужно для эффективного поиска работы и найма</p>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- 1. AI Matching -->
+            <div class="feature-card">
+                <div class="text-5xl mb-4">🤖</div>
+                <h3 class="text-xl font-bold text-white mb-2">AI-матчинг вакансий</h3>
+                <p class="text-gray-400 text-sm mb-3">Умный алгоритм подбирает идеальные вакансии на основе ваших навыков, опыта и местоположения.</p>
+                <div class="bg-dark rounded-lg p-3 mt-2">
+                    <div class="text-xs text-gray-400">Точность совпадения</div>
+                    <div class="w-full bg-gray-700 rounded-full h-2 mt-1">
+                        <div class="bg-gradient-to-r from-blue-500 to-cyan-500 h-2 rounded-full" style="width: 94%"></div>
+                    </div>
+                    <div class="text-right text-xs text-blue-400 mt-1">94% точности</div>
+                </div>
+            </div>
+            
+            <!-- 2. Telegram Bot -->
+            <div class="feature-card">
+                <div class="text-5xl mb-4">📱</div>
+                <h3 class="text-xl font-bold text-white mb-2">Telegram-бот</h3>
+                <p class="text-gray-400 text-sm mb-3">Мгновенные уведомления о новых вакансиях и откликах. Управляйте поиском прямо из Telegram.</p>
+                <div class="flex gap-2 mt-2">
+                    <span class="bg-blue-900/50 text-blue-300 text-xs px-2 py-1 rounded">/start</span>
+                    <span class="bg-blue-900/50 text-blue-300 text-xs px-2 py-1 rounded">/jobs</span>
+                    <span class="bg-blue-900/50 text-blue-300 text-xs px-2 py-1 rounded">/notify</span>
+                </div>
+            </div>
+            
+            <!-- 3. Filter by District -->
+            <div class="feature-card">
+                <div class="text-5xl mb-4">📍</div>
+                <h3 class="text-xl font-bold text-white mb-2">Фильтр по микрорайонам</h3>
+                <p class="text-gray-400 text-sm mb-3">Ищите работу только в вашем микрорайоне. Экономьте время на дорогу.</p>
+                <div class="flex flex-wrap gap-1 mt-2">
+                    <span class="bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">1 мкр</span>
+                    <span class="bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">2 мкр</span>
+                    <span class="bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">3 мкр</span>
+                    <span class="bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">4 мкр</span>
+                    <span class="bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">5 мкр</span>
+                    <span class="bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">...15 мкр</span>
+                </div>
+            </div>
+            
+            <!-- 4. Resume Builder -->
+            <div class="feature-card">
+                <div class="text-5xl mb-4">📄</div>
+                <h3 class="text-xl font-bold text-white mb-2">Конструктор резюме</h3>
+                <p class="text-gray-400 text-sm mb-3">Создайте профессиональное резюме с навыками, опытом работы и образованием.</p>
+                <ul class="text-sm text-gray-400 space-y-1">
+                    <li><i class="fas fa-check-circle text-green-400 mr-2"></i>Готовый шаблон</li>
+                    <li><i class="fas fa-check-circle text-green-400 mr-2"></i>Экспорт в PDF</li>
+                </ul>
+            </div>
+            
+            <!-- 5. Quick Apply -->
+            <div class="feature-card">
+                <div class="text-5xl mb-4">⚡</div>
+                <h3 class="text-xl font-bold text-white mb-2">Быстрый отклик</h3>
+                <p class="text-gray-400 text-sm mb-3">Откликайтесь на вакансии в один клик. Работодатель сразу получит уведомление.</p>
+                <div class="bg-green-900/30 p-2 rounded-lg text-center">
+                    <span class="text-green-400 text-sm">Среднее время отклика: 30 секунд</span>
+                </div>
+            </div>
+            
+            <!-- 6. Employer Dashboard -->
+            <div class="feature-card">
+                <div class="text-5xl mb-4">📊</div>
+                <h3 class="text-xl font-bold text-white mb-2">Панель работодателя</h3>
+                <p class="text-gray-400 text-sm mb-3">Управляйте вакансиями, смотрите статистику откликов, общайтесь с кандидатами.</p>
+                <div class="flex justify-between text-sm text-gray-400 mt-2">
+                    <span>📈 Просмотры</span>
+                    <span>📬 Отклики</span>
+                    <span>⭐ Рейтинг</span>
+                </div>
+            </div>
+            
+            <!-- 7. Candidate Search -->
+            <div class="feature-card">
+                <div class="text-5xl mb-4">🔎</div>
+                <h3 class="text-xl font-bold text-white mb-2">Поиск кандидатов</h3>
+                <p class="text-gray-400 text-sm mb-3">Находите лучших сотрудников с помощью AI-подбора и фильтров.</p>
+                <div class="flex gap-2">
+                    <span class="bg-purple-900/50 text-purple-300 text-xs px-2 py-1 rounded">по навыкам</span>
+                    <span class="bg-purple-900/50 text-purple-300 text-xs px-2 py-1 rounded">по опыту</span>
+                </div>
+            </div>
+            
+            <!-- 8. Saved Jobs -->
+            <div class="feature-card">
+                <div class="text-5xl mb-4">💾</div>
+                <h3 class="text-xl font-bold text-white mb-2">Сохранённые вакансии</h3>
+                <p class="text-gray-400 text-sm mb-3">Добавляйте интересные вакансии в избранное и возвращайтесь к ним позже.</p>
+                <i class="fas fa-bookmark text-blue-400"></i> <span class="text-gray-400 text-sm">Неограниченное количество</span>
+            </div>
+            
+            <!-- 9. Job Alerts -->
+            <div class="feature-card">
+                <div class="text-5xl mb-4">🔔</div>
+                <h3 class="text-xl font-bold text-white mb-2">Email/Telegram уведомления</h3>
+                <p class="text-gray-400 text-sm mb-3">Подпишитесь на новые вакансии по вашим критериям.</p>
+                <div class="flex gap-2">
+                    <span class="bg-blue-900/50 text-blue-300 text-xs px-2 py-1 rounded">✉️ Email</span>
+                    <span class="bg-blue-900/50 text-blue-300 text-xs px-2 py-1 rounded">📱 Telegram</span>
+                </div>
+            </div>
+            
+            <!-- 10. Analytics -->
+            <div class="feature-card">
+                <div class="text-5xl mb-4">📈</div>
+                <h3 class="text-xl font-bold text-white mb-2">Аналитика для бизнеса</h3>
+                <p class="text-gray-400 text-sm mb-3">Отслеживайте эффективность ваших вакансий и ROI найма.</p>
+                <div class="text-sm text-gray-400">Просмотры · Отклики · Конверсия</div>
+            </div>
+            
+            <!-- 11. Mobile Responsive -->
+            <div class="feature-card">
+                <div class="text-5xl mb-4">📱</div>
+                <h3 class="text-xl font-bold text-white mb-2">Адаптивный дизайн</h3>
+                <p class="text-gray-400 text-sm mb-3">Работает идеально на всех устройствах: телефон, планшет, ноутбук.</p>
+                <div class="flex justify-center gap-2 text-gray-400">
+                    <i class="fas fa-mobile-alt"></i>
+                    <i class="fas fa-tablet-alt"></i>
+                    <i class="fas fa-laptop"></i>
+                    <i class="fas fa-desktop"></i>
+                </div>
+            </div>
+            
+            <!-- 12. Security -->
+            <div class="feature-card">
+                <div class="text-5xl mb-4">🔒</div>
+                <h3 class="text-xl font-bold text-white mb-2">Полная безопасность</h3>
+                <p class="text-gray-400 text-sm mb-3">Хеширование паролей, защита от SQL-инъекций и XSS атак.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Сравнение с конкурентами -->
+<section class="py-16 bg-dark/50">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-white text-center mb-4">Сравнение с аналогами</h2>
+        <p class="text-center text-gray-400 mb-12">Почему Mangystau Jobs лучше?</p>
+        
+        <div class="overflow-x-auto">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Функция</th>
+                        <th>Mangystau Jobs</th>
+                        <th>hh.kz</th>
+                        <th>WhatsApp чаты</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Бесплатное использование</td><td class="text-green-400">✅ Да</td><td class="text-red-400">❌ Платно</td><td class="text-green-400">✅ Да</td></tr>
+                    <tr><td>AI-подбор вакансий</td><td class="text-green-400">✅ Да</td><td class="text-yellow-400">🟡 Частично</td><td class="text-red-400">❌ Нет</td></tr>
+                    <tr><td>Фильтр по микрорайонам Актау</td><td class="text-green-400">✅ Да</td><td class="text-red-400">❌ Нет</td><td class="text-red-400">❌ Нет</td></tr>
+                    <tr><td>Telegram-уведомления</td><td class="text-green-400">✅ Да</td><td class="text-red-400">❌ Нет</td><td class="text-yellow-400">🟡 Ограничено</td></tr>
+                    <tr><td>Отклик в 1 клик</td><td class="text-green-400">✅ Да</td><td class="text-green-400">✅ Да</td><td class="text-red-400">❌ Нет</td></tr>
+                    <tr><td>Подходит для малого бизнеса</td><td class="text-green-400">✅ Да</td><td class="text-red-400">❌ Нет</td><td class="text-green-400">✅ Да</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- Для кого -->
+<section class="py-16">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-white text-center mb-4">Для кого эта платформа?</h2>
+        <p class="text-center text-gray-400 mb-12">Mangystau Jobs создана для всех участников рынка труда</p>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-gradient-to-br from-blue-900/30 to-cyan-900/30 rounded-2xl p-8">
+                <div class="text-5xl mb-4">👨‍🎓</div>
+                <h3 class="text-2xl font-bold text-white mb-3">Для соискателей</h3>
+                <ul class="space-y-2 text-gray-300">
+                    <li><i class="fas fa-check-circle text-green-400 mr-2"></i>Молодёжь до 29 лет</li>
+                    <li><i class="fas fa-check-circle text-green-400 mr-2"></i>Студенты и выпускники</li>
+                    <li><i class="fas fa-check-circle text-green-400 mr-2"></i>Люди с опытом работы</li>
+                    <li><i class="fas fa-check-circle text-green-400 mr-2"></i>Ищущие подработку</li>
+                </ul>
+                <a href="register.php?role=seeker" class="mt-6 inline-block text-blue-400 hover:text-blue-300">Начать поиск →</a>
+            </div>
+            
+            <div class="bg-gradient-to-br from-purple-900/30 to-pink-900/30 rounded-2xl p-8">
+                <div class="text-5xl mb-4">🏢</div>
+                <h3 class="text-2xl font-bold text-white mb-3">Для работодателей</h3>
+                <ul class="space-y-2 text-gray-300">
+                    <li><i class="fas fa-check-circle text-green-400 mr-2"></i>Малый и средний бизнес</li>
+                    <li><i class="fas fa-check-circle text-green-400 mr-2"></i>Кафе, рестораны, магазины</li>
+                    <li><i class="fas fa-check-circle text-green-400 mr-2"></i>Строительные бригады</li>
+                    <li><i class="fas fa-check-circle text-green-400 mr-2"></i>Мастерские и сервисы</li>
+                </ul>
+                <a href="register.php?role=employer" class="mt-6 inline-block text-purple-400 hover:text-purple-300">Разместить вакансию →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Цены -->
+<section class="py-16 bg-dark/50">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-white text-center mb-4">Простые и понятные тарифы</h2>
+        <p class="text-center text-gray-400 mb-12">Никаких скрытых платежей. Прозрачные условия.</p>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="pricing-card text-center">
+                <div class="text-4xl mb-2">🎓</div>
+                <h3 class="text-xl font-bold text-white mb-2">Соискатель</h3>
+                <div class="text-3xl font-bold text-blue-400 mb-4">Бесплатно</div>
+                <ul class="space-y-2 text-gray-400 text-sm mb-6">
+                    <li>✓ Неограниченный поиск</li>
+                    <li>✓ AI-рекомендации</li>
+                    <li>✓ Отклик на вакансии</li>
+                    <li>✓ Сохранение вакансий</li>
+                    <li>✓ Telegram-уведомления</li>
+                </ul>
+                <a href="register.php?role=seeker" class="block bg-blue-600 text-white py-2 rounded-xl hover:bg-blue-700 transition">Начать сейчас</a>
+            </div>
+            
+            <div class="pricing-card text-center border-blue-500 shadow-lg shadow-blue-500/20">
+                <div class="text-4xl mb-2">🏢</div>
+                <h3 class="text-xl font-bold text-white mb-2">Работодатель</h3>
+                <div class="text-3xl font-bold text-blue-400 mb-4">Бесплатно</div>
+                <ul class="space-y-2 text-gray-400 text-sm mb-6">
+                    <li>✓ 5 активных вакансий</li>
+                    <li>✓ AI-подбор кандидатов</li>
+                    <li>✓ Управление откликами</li>
+                    <li>✓ Статистика вакансий</li>
+                    <li>✓ Telegram-уведомления</li>
+                </ul>
+                <a href="register.php?role=employer" class="block bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-2 rounded-xl hover:shadow-lg transition">Начать найм</a>
+            </div>
+            
+            <div class="pricing-card text-center">
+                <div class="text-4xl mb-2">⭐</div>
+                <h3 class="text-xl font-bold text-white mb-2">Премиум</h3>
+                <div class="text-3xl font-bold text-blue-400 mb-4">Скоро</div>
+                <ul class="space-y-2 text-gray-400 text-sm mb-6">
+                    <li>✓ Неограниченные вакансии</li>
+                    <li>✓ Топ-позиции в поиске</li>
+                    <li>✓ Расширенная аналитика</li>
+                    <li>✓ Приоритетная поддержка</li>
+                    <li>✓ API доступ</li>
+                </ul>
+                <a href="#" class="block bg-gray-700 text-gray-400 py-2 rounded-xl cursor-not-allowed">В разработке</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-16">
+    <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-white text-center mb-4">Часто задаваемые вопросы</h2>
+        <p class="text-center text-gray-400 mb-12">Ответы на популярные вопросы о платформе</p>
+        
+        <div class="space-y-2">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>❓ Как работает AI-подбор вакансий?</span>
+                    <i class="fas fa-chevron-down text-gray-400"></i>
+                </div>
+                <div class="faq-answer">
+                    Наш AI-алгоритм анализирует ваши навыки, опыт работы и местоположение, затем находит вакансии с максимальным процентом совпадения. Чем больше совпадений по ключевым параметрам, тем выше вакансия в рекомендациях.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>❓ Сколько стоит использование платформы?</span>
+                    <i class="fas fa-chevron-down text-gray-400"></i>
+                </div>
+                <div class="faq-answer">
+                    На данный момент платформа полностью бесплатна как для соискателей, так и для работодателей. В будущем планируется внедрение премиум-тарифов с дополнительными функциями.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>❓ Как получить уведомления в Telegram?</span>
+                    <i class="fas fa-chevron-down text-gray-400"></i>
+                </div>
+                <div class="faq-answer">
+                    Зарегистрируйтесь на платформе, затем в личном кабинете нажмите "Подключить Telegram-бота". Вы будете получать уведомления о новых вакансиях и откликах.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>❓ Какие микрорайоны Актау поддерживаются?</span>
+                    <i class="fas fa-chevron-down text-gray-400"></i>
+                </div>
+                <div class="faq-answer">
+                    Поддерживаются все 15 микрорайонов Актау, а также центр города и привокзальный район. Вы можете выбрать свой микрорайон при регистрации.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>❓ Как откликнуться на вакансию?</span>
+                    <i class="fas fa-chevron-down text-gray-400"></i>
+                </div>
+                <div class="faq-answer">
+                    Найдите подходящую вакансию и нажмите кнопку "Откликнуться". Работодатель получит уведомление и сможет связаться с вами по телефону.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-16 bg-gradient-to-r from-blue-900 to-cyan-900">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">Готовы начать?</h2>
+        <p class="text-xl text-blue-100 mb-8">Присоединяйтесь к крупнейшей платформе занятости в Мангистау</p>
+        <div class="flex flex-wrap gap-4 justify-center">
+            <a href="register.php" class="px-8 py-3 bg-white text-blue-900 rounded-xl font-semibold hover:shadow-xl transition">Зарегистрироваться</a>
+            <a href="documentation.html" class="px-8 py-3 border-2 border-white text-white rounded-xl font-semibold hover:bg-white/10 transition">Читать документацию</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark border-t border-gray-800 py-12">
+    <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
+        <p>© 2026 Mangystau Jobs - Цифровая платформа занятости для Мангистауской области</p>
+        <div class="flex justify-center gap-4 mt-4">
+            <a href="index.html" class="hover:text-blue-400">Главная</a>
+            <a href="features.html" class="hover:text-blue-400">Возможности</a>
+            <a href="documentation.html" class="hover:text-blue-400">Документация</a>
+            <a href="register.php" class="hover:text-blue-400">Регистрация</a>
+            <a href="login.php" class="hover:text-blue-400">Вход</a>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.addEventListener('click', () => {
+            item.classList.toggle('active');
+        });
+    });
+</script>
+</body>
+</html>

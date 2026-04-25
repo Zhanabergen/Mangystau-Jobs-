@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Полная документация | Mangystau Jobs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%);
+            font-family: 'Inter', sans-serif;
+        }
+        .doc-section {
+            background: #1E293B;
+            border: 1px solid #334155;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        .doc-section:hover {
+            border-color: #3B82F6;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+        }
+        .code-block {
+            background: #0F172A;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            color: #93C5FD;
+            border: 1px solid #334155;
+        }
+        .table-doc {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .table-doc th, .table-doc td {
+            border: 1px solid #334155;
+            padding: 0.75rem;
+            text-align: left;
+            color: #E2E8F0;
+        }
+        .table-doc th {
+            background: #0F172A;
+            color: #60A5FA;
+            font-weight: bold;
+        }
+        .badge-tech {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .badge-php { background: #777BB4; color: white; }
+        .badge-html { background: #E34F26; color: white; }
+        .badge-css { background: #1572B6; color: white; }
+        .badge-js { background: #F7DF1E; color: black; }
+        .badge-sql { background: #4479A1; color: white; }
+        .badge-tailwind { background: #06B6D4; color: white; }
+        .badge-mysql { background: #00758F; color: white; }
+        .toc {
+            position: sticky;
+            top: 100px;
+            background: #1E293B;
+            border: 1px solid #334155;
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+        .toc a {
+            display: block;
+            padding: 0.5rem 0;
+            color: #94A3B8;
+            transition: color 0.3s;
+        }
+        .toc a:hover {
+            color: #60A5FA;
+        }
+        hr {
+            border-color: #334155;
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+<body class="dark">
+
+<!-- Navigation -->
+<nav class="fixed w-full bg-dark/95 backdrop-blur-md shadow-2xl z-50 border-b border-blue-900/30 py-4">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <div class="text-3xl">🏝️</div>
+            <div>
+                <span class="font-bold text-2xl bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Mangystau</span>
+                <span class="font-bold text-2xl text-white">Jobs</span>
+            </div>
+            <span class="bg-blue-600 text-white text-xs px-2 py-1 rounded-full">Документация v2.0</span>
+        </div>
+        <div class="hidden md:flex space-x-6">
+            <a href="index.html" class="text-gray-300 hover:text-blue-400 transition"><i class="fas fa-home mr-1"></i>Главная</a>
+            <a href="features.html" class="text-gray-300 hover:text-blue-400 transition"><i class="fas fa-star mr-1"></i>Возможности</a>
+            <a href="documentation.html" class="text-blue-400 font-bold"><i class="fas fa-book mr-1"></i>Документация</a>
+            <a href="register.php" class="text-gray-300 hover:text-blue-400 transition"><i class="fas fa-user-plus mr-1"></i>Регистрация</a>
+            <a href="login.php" class="text-gray-300 hover:text-blue-400 transition"><i class="fas fa-sign-in-alt mr-1"></i>Вход</a>
+        </div>
+    </div>
+</nav>
+
+<div class="max-w-7xl mx-auto px-4 pt-28 pb-12">
+    <div class="grid lg:grid-cols-4 gap-8">
+        <!-- Sidebar TOC -->
+        <div class="lg:col-span-1">
+            <div class="toc">
+                <h3 class="text-white font-bold text-lg mb-4"><i class="fas fa-list mr-2 text-blue-400"></i>Содержание</h3>
+                <a href="#overview">📋 1. Обзор проекта</a>
+                <a href="#tech-stack">🛠 2. Технологический стек</a>
+                <a href="#file-structure">📁 3. Полная структура файлов</a>
+                <a href="#database">💾 4. Структура базы данных</a>
+                <a href="#connections">🔗 5. Связи между файлами</a>
+                <a href="#api">📡 6. API эндпоинты</a>
+                <a href="#ai-algorithm">🧠 7. AI алгоритм матчинга</a>
+                <a href="#installation">⚙️ 8. Установка и настройка</a>
+                <a href="#deployment">🚀 9. Деплой на хостинг</a>
+                <a href="#testing">🧪 10. Тестирование</a>
+                <a href="#troubleshooting">🔧 11. Решение проблем</a>
+                <a href="#security">🔒 12. Безопасность</a>
+                <a href="#roadmap">🗺 13. План развития</a>
+                <a href="#team">👥 14. О команде</a>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="lg:col-span-3">
+            <!-- 1. Overview -->
+            <section id="overview" class="doc-section">
+                <h2 class="text-3xl font-bold text-white mb-4"><i class="fas fa-info-circle text-blue-400 mr-2"></i>1. Обзор проекта</h2>
+                <p class="text-gray-300 leading-relaxed mb-4">
+                    <strong>Mangystau Jobs</strong> — это полноценная веб-платформа для поиска работы и найма сотрудников, 
+                    созданная специально для решения проблемы неоцифрованного рынка труда в Мангистауской области.
+                </p>
+                <div class="grid md:grid-cols-2 gap-4 mt-4">
+                    <div class="bg-dark/50 p-4 rounded-lg">
+                        <h3 class="font-bold text-white mb-2">🎯 Проблема</h3>
+                        <p class="text-gray-400 text-sm">Вакансии живут в WhatsApp-чатах, hh.ru не охватывает малый бизнес Актау, молодёжь не видит возможностей рядом.</p>
+                    </div>
+                    <div class="bg-dark/50 p-4 rounded-lg">
+                        <h3 class="font-bold text-white mb-2">✅ Решение</h3>
+                        <p class="text-gray-400 text-sm">Единая платформа с AI-подбором, фильтрацией по микрорайонам и Telegram-уведомлениями.</p>
+                    </div>
+                </div>
+                <div class="mt-4 p-4 bg-blue-900/30 rounded-lg border border-blue-500/30">
+                    <p class="text-blue-300 text-sm"><i class="fas fa-trophy mr-2"></i>Хакатон Mangystau Hackathon 2025 - Решение для 1 места</p>
+                </div>
+            </section>
+            
+            <!-- 2. Tech Stack -->
+            <section id="tech-stack" class="doc-section">
+                <h2 class="text-3xl font-bold text-white mb-4"><i class="fas fa-cogs text-blue-400 mr-2"></i>2. Технологический стек</h2>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="badge-tech badge-php">PHP 8+</span>
+                    <span class="badge-tech badge-html">HTML5</span>
+                    <span class="badge-tech badge-css">CSS3</span>
+                    <span class="badge-tech badge-js">JavaScript ES6</span>
+                    <span class="badge-tech badge-sql">SQL</span>
+                    <span class="badge-tech badge-tailwind">Tailwind CSS</span>
+                    <span class="badge-tech badge-mysql">MySQL</span>
+                </div>
+                <div class="grid md:grid-cols-2 gap-4 mt-4">
+                    <div>
+                        <h3 class="font-bold text-white mb-2">Frontend</h3>
+                        <ul class="text-gray-400 text-sm space-y-1">
+                            <li>• Tailwind CSS - утилитарный CSS фреймворк</li>
+                            <li>• Font Awesome 6 - иконки</li>
+                            <li>• JavaScript (fetch API, DOM manipulation)</li>
+                            <li>• Адаптивный дизайн (Mobile First)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white mb-2">Backend</h3>
+                        <ul class="text-gray-400 text-sm space-y-1">
+                            <li>• PHP 8+ - серверная логика</li>
+                            <li>• MySQL - реляционная база данных</li>
+                            <li>• PDO - безопасное подключение к БД</li>
+                            <li>• REST API - для AJAX запросов</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 3. File Structure -->
+            <section id="file-structure" class="doc-section">
+                <h2 class="text-3xl font-bold text-white mb-4"><i class="fas fa-folder-tree text-blue-400 mr-2"></i>3. Полная структура файлов</h2>
+                <div class="code-block">
+                    <pre>
+📁 mangystau_hackathon/
+│
+├── 📄 <strong>index.html</strong>                 # Главная страница (тёмная тема)
+├── 📄 <strong>features.html</strong>             # Подробная страница возможностей
+├── 📄 <strong>documentation.html</strong>        # Полная документация (ЭТОТ ФАЙЛ)
+├── 📄 <strong>register.php</strong>             # Страница регистрации
+├── 📄 <strong>login.php</strong>                # Страница входа
+├── 📄 <strong>dashboard.php</strong>            # Личный кабинет (AI-рекомендации)
+├── 📄 <strong>logout.php</strong>               # Выход из системы
+├── 📄 <strong>database.php</strong>             # Подключение к БД + создание таблиц
+├── 📄 <strong>database.sql</strong>              # SQL-дамп для импорта
+├── 📄 <strong>style.css</strong>                 # Кастомные стили + анимации
+├── 📄 <strong>script.js</strong>                 # JavaScript (fetch, UI, уведомления)
+│
+├── 📁 <strong>api/</strong>
+│   ├── 📄 <strong>api_get_jobs.php</strong>       # GET: список вакансий с фильтрацией
+│   ├── 📄 <strong>api_apply.php</strong>          # POST: отклик на вакансию
+│   ├── 📄 <strong>api_ai_match.php</strong>       # GET: AI-рекомендации для соискателя
+│   ├── 📄 <strong>api_create_job.php</strong>     # POST: создание вакансии
+│   ├── 📄 <strong>api_get_my_jobs.php</strong>    # GET: вакансии работодателя
+│   ├── 📄 <strong>api_get_responses.php</strong>  # GET: отклики на вакансии
+│   └── 📄 <strong>api_update_status.php</strong>  # POST: обновление статуса отклика
+│
+└── 📁 <strong>assets/</strong> (опционально)
+    └── 📁 <strong>images/</strong>                # Изображения для сайта
+                    </pre>
+                </div>
+                <div class="mt-4 p-3 bg-green-900/30 rounded-lg border border-green-500/30">
+                    <p class="text-green-300 text-sm"><i class="fas fa-check-circle mr-2"></i>Всего файлов: 19 | Общий размер: ~150KB</p>
+                </div>
+            </section>
+            
+            <!-- 4. Database Structure -->
+            <section id="database" class="doc-section">
+                <h2 class="text-3xl font-bold text-white mb-4"><i class="fas fa-database text-blue-400 mr-2"></i>4. Структура базы данных</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Таблица: users</h3>
+                        <table class="table-doc">
+                            <thead>
+                                <tr><th>Поле</th><th>Тип</th><th>Описание</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>id</td><td>INT PRIMARY KEY AUTO_INCREMENT</td><td>Уникальный ID пользователя</td></tr>
+                                <tr><td>email</td><td>VARCHAR(255) UNIQUE</td><td>Email для входа</td></tr>
+                                <tr><td>password</td><td>VARCHAR(255)</td><td>Хеш пароля (bcrypt)</td></tr>
+                                <tr><td>fullname</td><td>VARCHAR(255)</td><td>Полное имя пользователя</td></tr>
+                                <tr><td>phone</td><td>VARCHAR(50)</td><td>Номер телефона</td></tr>
+                                <tr><td>role</td><td>ENUM('seeker','employer')</td><td>Роль: соискатель или работодатель</td></tr>
+                                <tr><td>microdistrict</td><td>VARCHAR(50)</td><td>Микрорайон проживания/работы</td></tr>
+                                <tr><td>skills</td><td>TEXT</td><td>Навыки (через запятую)</td></tr>
+                                <tr><td>experience</td><td>INT</td><td>Опыт работы в годах</td></tr>
+                                <tr><td>created_at</td><td>TIMESTAMP</td><td>Дата регистрации</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Таблица: jobs</h3>
+                        <table class="table-doc">
+                            <thead><tr><th>Поле</th><th>Тип</th><th>Описание</th></tr></thead>
+                            <tbody>
+                                <tr><td>id</td><td>INT PRIMARY KEY</td><td>Уникальный ID вакансии</td></tr>
+                                <tr><td>employer_id</td><td>INT FOREIGN KEY</td><td>ID работодателя</td></tr>
+                                <tr><td>title</td><td>VARCHAR(255)</td><td>Название вакансии</td></tr>
+                                <tr><td>description</td><td>TEXT</td><td>Описание вакансии</td></tr>
+                                <tr><td>skills_required</td><td>TEXT</td><td>Требуемые навыки</td></tr>
+                                <tr><td>salary_min</td><td>INT</td><td>Минимальная зарплата</td></tr>
+                                <tr><td>salary_max</td><td>INT</td><td>Максимальная зарплата</td></tr>
+                                <tr><td>microdistrict</td><td>VARCHAR(50)</td><td>Микрорайон работы</td></tr>
+                                <tr><td>type</td><td>ENUM('full','part','freelance')</td><td>Тип занятости</td></tr>
+                                <tr><td>is_active</td><td>BOOLEAN</td><td>Активна ли вакансия</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Таблица: applications</h3>
+                        <table class="table-doc">
+                            <thead><tr><th>Поле</th><th>Тип</th><th>Описание</th></tr></thead>
+                            <tbody>
+                                <tr><td>id</td><td>INT PRIMARY KEY</td><td>Уникальный ID отклика</td></tr>
+                                <tr><td>job_id</td><td>INT FOREIGN KEY</td><td>ID вакансии</td></tr>
+                                <tr><td>seeker_id</td><td>INT FOREIGN KEY</td><td>ID соискателя</td></tr>
+                                <tr><td>status</td><td>ENUM('pending','accepted','rejected')</td><td>Статус отклика</td></tr>
+                                <tr><td>ai_score</td><td>INT</td><td>AI балл совпадения (0-100)</td></tr>
+                                <tr><td>created_at</td><td>TIMESTAMP</td><td>Дата отклика</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 5. Connections -->
+            <section id="connections" class="doc-section">
+                <h2 class="text-3xl font-bold text-white mb-4"><i class="fas fa-link text-blue-400 mr-2"></i>5. Связи между файлами</h2>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <h3 class="font-bold text-white mb-2">📎 Навигационные ссылки</h3>
+                        <ul class="text-gray-400 text-sm space-y-1">
+                            <li>• <code>index.html</code> → <code>login.php</code>, <code>register.php</code></li>
+                            <li>• <code>index.html</code> → <code>features.html</code>, <code>documentation.html</code></li>
+                            <li>• <code>register.php</code> (успех) → <code>dashboard.php</code></li>
+                            <li>• <code>login.php</code> (успех) → <code>dashboard.php</code></li>
+                            <li>• <code>dashboard.php</code> → <code>logout.php</code></li>
+                            <li>• <code>logout.php</code> → <code>index.html</code></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white mb-2">📡 API вызовы (fetch)</h3>
+                        <ul class="text-gray-400 text-sm space-y-1">
+                            <li>• <code>dashboard.php</code> → <code>api_get_jobs.php</code></li>
+                            <li>• <code>dashboard.php</code> → <code>api_ai_match.php</code></li>
+                            <li>• <code>dashboard.php</code> → <code>api_apply.php</code></li>
+                            <li>• <code>dashboard.php</code> → <code>api_create_job.php</code></li>
+                            <li>• <code>dashboard.php</code> → <code>api_get_my_jobs.php</code></li>
+                            <li>• <code>dashboard.php</code> → <code>api_get_responses.php</code></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-4 p-4 bg-dark rounded-lg">
+                    <p class="text-gray-300 text-center"><i class="fas fa-chart-simple mr-2 text-blue-400"></i>Все PHP файлы включают <code>database.php</code> для подключения к БД</p>
+                </div>
+            </section>
+            
+            <!-- 6. API Endpoints -->
+            <section id="api" class="doc-section">
+                <h2 class="text-3xl font-bold text-white mb-4"><i class="fas fa-plug text-blue-400 mr-2"></i>6. API эндпоинты</h2>
+                <div class="space-y-4">
+                    <div class="bg-dark rounded-lg p-4">
+                        <h3 class="font-bold text-blue-400 mb-2">GET /api_get_jobs.php</h3>
+                        <p class="text-gray-400 text-sm mb-2">Получение списка вакансий с фильтрацией</p>
+                        <div class="code-block text-sm">
+                            <pre>Параметры:
+- title (string) - поиск по названию/описанию
+- district (string) - фильтр по микрорайону
+- type (string) - фильтр по типу занятости
+
+Ответ: JSON массив объектов вакансий</pre>
+                        </div>
+                    </div>
+                    <div class="bg-dark rounded-lg p-4">
+                        <h3 class="font-bold text-blue-400 mb-2">POST /api_apply.php</h3>
+                        <p class="text-gray-400 text-sm mb-2">Создание отклика на вакансию</p>
+                        <div class="code-block text-sm">
+                            <pre>Параметры:
+- job_id (int) - ID вакансии
+
+Ответ: {"success": true, "ai_score": 94}</pre>
+                        </div>
+                    </div>
+                    <div class="bg-dark rounded-lg p-4">
+                        <h3 class="font-bold text-blue-400 mb-2">GET /api_ai_match.php</h3>
+                        <p class="text-gray-400 text-sm mb-2">Получение AI-рекомендаций для соискателя</p>
+                        <div class="code-block text-sm">
+                            <pre>Ответ: JSON массив вакансий с процентом совпадения</pre>
+                        </div>
+                    </div>
+                    <div class="bg-dark rounded-lg p-4">
+                        <h3 class="font-bold text-blue-400 mb-2">POST /api_create_job.php</h3>
+                        <p class="text-gray-400 text-sm mb-2">Создание новой вакансии (только employer)</p>
+                        <div class="code-block text-sm">
+                            <pre>Параметры: title, description, skills, salary_min, salary_max, district, type
+
+Ответ: {"success": true}</pre>
+                        </div>
+                    </div>
+                    <div class="bg-dark rounded-lg p-4">
+                        <h3 class="font-bold text-blue-400 mb-2">GET /api_get_my_jobs.php</h3>
+                        <p class="text-gray-400 text-sm mb-2">Получение вакансий работодателя</p>
+                        <div class="code-block text-sm">
+                            <pre>Ответ: JSON массив вакансий с количеством откликов</pre>
+                        </div>
+                    </div>
+                    <div class="bg-dark rounded-lg p-4">
+                        <h3 class="font-bold text-blue-400 mb-2">GET /api_get_responses.php</h3>
+                        <p class="text-gray-400 text-sm mb-2">Получение откликов на вакансии работодателя</p>
+                        <div class="code-block text-sm">
+                            <pre>Ответ: JSON массив откликов с данными соискателей</pre>
+                        </div>
+                    </div>
+                    <div class="bg-dark rounded-lg p-4">
+                        <h3 class="font-bold text-blue-400 mb-2">POST /api_update_status.php</h3>
+                        <p class="text-gray-400 text-sm mb-2">Обновление статуса отклика</p>
+                        <div class="code-block text-sm">
+                            <pre>Параметры: app_id (int), status (pending/accepted/rejected)
+
+Ответ: {"success": true}</pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 7. AI Algorithm -->
+            <section id="ai-algorithm" class="doc-section">
+                <h2 class="text-3xl font-bold text-white mb-4"><i class="fas fa-brain text-blue-400 mr-2"></i>7. AI алгоритм матчинга</h2>
+                <div class="bg-dark rounded-lg p-4 mb-4">
+                    <h3 class="font-bold text-white mb-2">Формула расчёта совпадения</h3>
+                    <div class="code-block mb-3">
+                        <pre>Match Score = (Skills Match × 60%) + (Location Match × 30%) + (Experience Match × 10%)</pre>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-3 mt-4">
+                        <div class="bg-blue-900/30 p-3 rounded-lg">
+                            <span class="text-blue-400 font-bold">Навыки (60%)</span>
+                            <p class="text-gray-400 text-sm mt-1">Сравнение навыков соискателя с требованиями вакансии через пересечение множеств</p>
+                        </div>
+                        <div class="bg-cyan-900/30 p-3 rounded-lg">
+                            <span class="text-cyan-400 font-bold">Локация (30%)</span>
+                            <p class="text-gray-400 text-sm mt-1">Совпадение микрорайона даёт +30 баллов, в противном случае +10</p>
+                        </div>
+                        <div class="bg-purple-900/30 p-3 rounded-lg">
+                            <span class="text-purple-400 font-bold">Опыт (10%)</span>
+                            <p class="text-gray-400 text-sm mt-1">Чем ближе опыт к требованию, тем выше балл (макс 10)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-dark rounded-lg p-4">
+                    <h3 class="font-bold text-white mb-2">Пример работы AI</h3>
+                    <div class="code-block">
+                        <pre>
+Соискатель: Навыки: "бариста, кассир, английский" | Микрорайон: 3 | Опыт: 2 года
+Вакансия:   Навыки: "бариста, кофемашина" | Микрорайон: 3 | Требование опыта: 1+ год
+
+Расчёт:
+- Навыки: общие: ["бариста"] → 1/2 × 60 = 30 баллов
+- Локация: совпадает → 30 баллов
+- Опыт: 2 года ≥ 1 года → 10 баллов
+ИТОГО: 70% совпадения</pre>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 8. Installation -->
+            <section id="installation" class="doc-section">
+                <h2 class="text-3xl font-bold text-white mb-4"><i class="fas fa-download text-blue-400 mr-2"></i>8. Установка и настройка</h2>
+                <div class="space-y-4">
+                    <div class="bg-dark rounded-lg p-4">
+                        <h3 class="font-bold text-white mb-2">Шаг 1: Установка локального сервера</h3>
+                        <ul class="list-decimal list-inside text-gray-400 text-sm space-y-1">
+                            <li>Скачайте и установите <a href="https://www.apachefriends.org/" class="text-blue-400 hover:underline">XAMPP</a> или <a href="https://www.wampserver.com/" class="text-blue-400 hover:underline">WAMP</a></li>
+                            <li>Запустите Apache и MySQL серверы</li>
+                            <li>Убедитесь, что порты 80 и 3306 свободны</li>
+                        </ul>
+                    </div>
+                    <div class="bg-dark rounded-lg p-4">
+                        <h3 class="font-bold text-white mb-2">Шаг 2: Размещение файлов</h3>
+                        <ul class="list-decimal list-inside text-gray-400 text-sm space-y-1">
+                            <li>Скопируйте все файлы в папку: <code>C:\xampp\htdocs\mangystau_hackathon\</code> (для XAMPP)</li>
+                            <li>Убедитесь, что структура папок сохранена</li>
+                        </ul>
+                    </div>
+                    <div class="bg-dark rounded-lg p-4">
+                        <h3 class="font-bold text-white mb-2">Шаг 3: Настройка базы данных</h3>
+                        <ul class="list-decimal list-inside text-gray-400 text-sm space-y-1">
+                            <li>Откройте phpMyAdmin: <code>http://localhost/phpmyadmin</code></li>
+                            <li>Создайте базу данных: <code>mangystau_jobs</code></li>
+                            <li>Импортируйте файл <code>database.sql</code></li>
+                            <li>Проверьте подключение в <code>database.php</code></li>
+                        </ul>
+                    </div>
+                    <div class="bg-dark rounded-lg p-4">
+                        <h3 class="font-bold text-white mb-2">Шаг 4: Запуск приложения</h3>
+                        <ul class="list-decimal list-inside text-gray-400 text-sm space-y-1">
+                            <li>Откройте браузер</li>
+                            <li>Перейдите по адресу: <code>http://localhost/mangystau_hackathon/index.html</code></li>
+                            <li>Готово! Платформа запущена</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 9. Deployment -->
+            <section id="deployment" class="doc-section">
+                <h2 class="text-3xl font-bold text-white mb-4"><i class="fas fa-cloud-upload-alt text-blue-400 mr-2"></i>9. Деплой на хостинг</h2>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-dark rounded-lg p-4">
+                        <h3 class="font-bold text-white mb-2">🚀 Railway.app</h3>
+                        <ol class="list-decimal list-inside text-gray-400 text-sm space-y-1">
+                            <li>Создайте аккаунт на railway.app</li>
+                            <li>Подключите GitHub репозиторий</li>
+                            <li>Добавьте MySQL базу данных</li>
+                            <li>Настройте переменные окружения</li>
+                            <li>Деплой автоматический</li>
+                        </ol>
+                    </div>
+                    <div class="bg-dark rounded-lg p-4">
+                        <h3 class="font-bold text-white mb-2">🚀 Render.com</h3>
+                        <ol class="list-decimal list-inside text-gray-400 text-sm space-y-1">
+                            <li>Создайте аккаунт на render.com</li>
+                            <li>Выберите "New Web Service"</li>
+                            <li>Подключите GitHub репозиторий</li>
+                            <li>Выберите "PHP Runtime"</li>
+                            <li>Нажмите "Deploy"</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="mt-4 p-3 bg-yellow-900/30 rounded-lg border border-yellow-500/30">
+                    <p class="text-yellow-300 text-sm"><i class="fas fa-exclamation-triangle mr-2"></i>Важно: Не забудьте изменить настройки базы данных в database.php после деплоя!</p>
+                </div>
+            </section>
+            
+            <!-- 10. Testing -->
+            <section id="testing" class="doc-section">
+                <h2 class="text-3xl font-bold text-white mb-4"><i class="fas fa-vial text-blue-400 mr-2"></i>10. Тестирование</h2>
+                <div class="space-y-3">
+                    <div class="bg-dark rounded-lg p-3">
+                        <h3 class="font-bold text-green-400 mb-1">Тест 1: Регистрация</h3>
+                        <p class="text-gray-400 text-sm">Перейдите на register.php → заполните форму → проверьте редирект на dashboard.php</p>
+                    </div>
+                    <div class="bg-dark rounded-lg p-3">
+                        <h3 class="font-bold text-green-400 mb-1">Тест 2: Авторизация</h3>
+                        <p class="text-gray-400 text-sm">Используйте seeker@demo.com / 123456 → проверьте вход в систему</p>
+                    </div>
+                    <div class="bg-dark rounded-lg p-3">
+                        <h3 class="font-bold text-green-400 mb-1">Тест 3: AI рекомендации</h3>
+                        <p class="text-gray-400 text-sm">На dashboard.php проверьте блок "AI Recommended Jobs For You"</p>
+                    </div>
+                    <div class="bg-dark rounded-lg p-3">
+                        <h3 class="font-bold text-green-400 mb-1">Тест 4: Отклик на вакансию</h3>
+                        <p class="text-gray-400 text-sm">Найдите вакансию → нажмите "Apply" → проверьте уведомление об успехе</p>
+                    </div>
+                    <div class="bg-dark rounded-lg p-3">
+                        <h3 class="font-bold text-green-400 mb-1">Тест 5: Создание вакансии (employer)</h3>
+                        <p class="text-gray-400 text-sm">Войдите как employer → нажмите "Post Job" → заполните форму → проверьте появление в списке</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 11. Troubleshooting -->
+            <section id="troubleshooting" class="doc-section">
+                <h2 class="text-3xl font-bold text-white mb-4"><i class="fas fa-wrench text-blue-400 mr-2"></i>11. Решение проблем</h2>
+                <div class="space-y-3">
+                    <div class="bg-red-900/30 rounded-lg p-3 border border-red-500/30">
+                        <h3 class="font-bold text-red-400">❌ Ошибка: "Connection failed"</h3>
+                        <p class="text-gray-400 text-sm mt-1">Решение: Проверьте настройки в database.php (хост, пользователь, пароль, имя БД)</p>
+                    </div>
+                    <div class="bg-red-900/30 rounded-lg p-3 border border-red-500/30">
+                        <h3 class="font-bold text-red-400">❌ Ошибка: "404 Not Found"</h3>
+                        <p class="text-gray-400 text-sm mt-1">Решение: Убедитесь, что все файлы скопированы в правильную папку и пути указаны верно</p>
+                    </div>
+                    <div class="bg-red-900/30 rounded-lg p-3 border border-red-500/30">
+                        <h3 class="font-bold text-red-400">❌ Ошибка: "Session start failed"</h3>
+                        <p class="text-gray-400 text-sm mt-1">Решение: Проверьте, что нет пробелов или вывода до session_start() в PHP файлах</p>
+                    </div>
+                    <div class="bg-red-900/30 rounded-lg p-3 border border-red-500/30">
+                        <h3 class="font-bold text-red-400">❌ Не показываются AI рекомендации</h3>
+                        <p class="text-gray-400 text-sm mt-1">Решение: Убедитесь, что у соискателя заполнены навыки, микрорайон и опыт в профиле</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 12. Security -->
+            <section id="security" class="doc-section">
+                <h2 class="text-3xl font-bold text-white mb-4"><i class="fas fa-shield-alt text-blue-400 mr-2"></i>12. Безопасность</h2>
+                <div class="grid md:grid-cols-2 gap-3">
+                    <div class="bg-dark rounded-lg p-3">
+                        <i class="fas fa-lock text-green-400 mr-2"></i>
+                        <span class="text-white">Хеширование паролей</span>
+                        <p class="text-gray-400 text-sm mt-1">Пароли хранятся в БД с использованием password_hash() и password_verify()</p>
+                    </div>
+                    <div class="bg-dark rounded-lg p-3">
+                        <i class="fas fa-database text-green-400 mr-2"></i>
+                        <span class="text-white">Защита от SQL-инъекций</span>
+                        <p class="text-gray-400 text-sm mt-1">Используются подготовленные запросы PDO</p>
+                    </div>
+                    <div class="bg-dark rounded-lg p-3">
+                        <i class="fas fa-code text-green-400 mr-2"></i>
+                        <span class="text-white">XSS защита</span>
+                        <p class="text-gray-400 text-sm mt-1">Все выводы экранируются через htmlspecialchars()</p>
+                    </div>
+                    <div class="bg-dark rounded-lg p-3">
+                        <i class="fas fa-user-check text-green-400 mr-2"></i>
+                        <span class="text-white">Сессии</span>
+                        <p class="text-gray-400 text-sm mt-1">Проверка авторизации перед доступом к защищённым страницам</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 13. Roadmap -->
+            <section id="roadmap" class="doc-section">
+                <h2 class="text-3xl font-bold text-white mb-4"><i class="fas fa-road text-blue-400 mr-2"></i>13. План развития (Roadmap)</h2>
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white text-sm font-bold">✓</div>
+                        <div><span class="text-white font-bold">MVP версия</span><p class="text-gray-400 text-sm">Регистрация, вакансии, отклики, AI-матчинг</p></div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-white text-sm font-bold">🔄</div>
+                        <div><span class="text-white font-bold">Версия 2.0</span><p class="text-gray-400 text-sm">Telegram-бот, push-уведомления, чат между пользователями</p></div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 bg-gray-500 rounded-full flex items-center justify-center text-white text-sm font-bold">○</div>
+                        <div><span class="text-white font-bold">Версия 3.0</span><p class="text-gray-400 text-sm">Мобильное приложение, видео-резюме, аналитика для бизнеса</p></div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 14. Team -->
+            <section id="team" class="doc-section">
+                <h2 class="text-3xl font-bold text-white mb-4"><i class="fas fa-users text-blue-400 mr-2"></i>14. О команде</h2>
+                <div class="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 rounded-lg p-6 text-center">
+                    <p class="text-white text-lg mb-2">🏆 Хакатон Mangystau Hackathon 2025</p>
+                    <p class="text-gray-300">Решение, которое меняет рынок труда Мангистауской области</p>
+                    <div class="mt-4 flex justify-center gap-4">
+                        <a href="index.html" class="text-blue-400 hover:text-blue-300">Главная</a>
+                        <a href="features.html" class="text-blue-400 hover:text-blue-300">Возможности</a>
+                        <a href="register.php" class="text-blue-400 hover:text-blue-300">Регистрация</a>
+                        <a href="login.php" class="text-blue-400 hover:text-blue-300">Вход</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Footer -->
+            <div class="text-center text-gray-500 text-sm pt-8 border-t border-gray-800">
+                <p>© 2025 Mangystau Jobs - Полная документация проекта | Версия 2.0</p>
+                <p class="mt-2">Все права защищены. Решение для хакатона.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
